@@ -1,16 +1,15 @@
 
-# Introduction
+# Introducción
 
-It is human instinct to be sceptical of a new paradigm. To put some
-perspective on how far we have come, and the shifts we have already
-accepted on the JVM, let's start with a quick recap of the last 20
-years.
+Es un instinto humano ser escéptico sobre un nuevo paradigma. Para poner 
+en perspectiva que tan lejos hemos llegado, y los cambios que ya hemos 
+aceptado en JVM, empecemos por un rápido repaso de los últimos 20 años.
 
-Java 1.2 introduced the Collections API, allowing us to write methods
-that abstracted over mutable collections. It was useful for writing
-general purpose algorithms and was the bedrock of our codebases.
+Java 1.2 introdujo Collections API, permitiéndonos escribir métodos 
+abstractos de colecciones. Fue útil para escribir algoritmos genéricos 
+y constituyó la base de nuestro código.
 
-But there was a problem, we had to perform runtime casting:
+Pero había un problema, teníamos que performar 'casting' en tiempo de ejecución:
 
 {lang="text"}
 ~~~~~~~~
@@ -19,34 +18,34 @@ But there was a problem, we had to perform runtime casting:
   }
 ~~~~~~~~
 
-In response, developers defined domain objects in their business logic
-that were effectively `CollectionOfThings`, and the Collection API
-became implementation detail.
+Como solución, los desarrolladores tuvieron que definir modelos en su lógica 
+de negocio que eran efectivamente `CollectionOfThings`, y de esta manera 
+Collection API se convirtió en un detalle de implementación.
 
-In 2005, Java 5 introduced *generics*, allowing us to define
-`Collection<Thing>`, abstracting over the container **and** its
-elements. Generics changed how we wrote Java.
+En el 2005, Java 5 introdujo *generics*, así permitiéndonos definir
+`Collection<Thing>`, abstrayéndonos no sólo del container, sino también 
+de sus elementos. Generics cambió la manera en la que escribimos Java.
 
-The author of the Java generics compiler, Martin Odersky, then created
-Scala with a stronger type system, immutable data and multiple
-inheritance. This brought about a fusion of object oriented (OOP) and
-functional programming (FP).
+El autor de Java generics, Martin Odersky, creó después Scala con un 
+‘Type system’ aún más fuerte, estructuras inmutables y herencia múltiple. 
+Esto trajo consigo una fusión de programación orientada a objetos (OOP) 
+y programación funcional (FP).
 
-For most developers, FP means using immutable data as much as
-possible, but mutable state is still a necessary evil that must be
-isolated and managed, e.g. with Akka actors or `synchronized` classes.
-This style of FP results in simpler programs that are easier to
-parallelise and distribute, an improvement over Java. But it is only
-scratching the surface of the benefits of FP, as we will discover in
-this book.
+Para la mayoría de desarrolladores, FP significa utilizar valores inmutables 
+siempre que sea posible, pero el estado mutable es todavía es un mal necesario 
+que debe ser aislado y manejado, por ej. Con Akka o clases `synchronized`. 
+Este estilo de FP resulta en programas más simples de paralelizar y distribuir, 
+definitivamente una mejora sobre Java. Pero esto es sólo el principio de los 
+beneficios de FP, como iremos descubriendo más adelante en este libro. 
 
-Scala also brings `Future`, making it easy to write asynchronous
-applications. But when a `Future` makes it into a return type,
-*everything* needs to be rewritten to accomodate it, including the
-tests, which are now subject to arbitrary timeouts.
+Scala también incorpora `Future`, haciendo más fácil escribir aplicaciones 
+asíncronas. Pero cuando el tipo retornado es un `Future`, *todo* 
+necesita ser reescrito para ser compatible, incluyendo tests, que ahora 
+están sujetos a ‘timeouts’ arbitrarios.
 
-We have a problem similar to Java 1.0: there is no way of abstracting
-over execution, much as we had no way of abstracting over collections.
+Tenemos un problema similar a Java 1.0: No hay manera de abstraernos de la 
+ejecución, de la misma manera que no teníamos manera de abstraernos de las 
+colecciones.
 
 
 ## Abstracting over Execution
