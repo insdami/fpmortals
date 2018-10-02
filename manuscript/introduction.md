@@ -3,11 +3,11 @@
 
 Es un instinto humano ser escéptico sobre un nuevo paradigma. Para poner 
 en perspectiva que tan lejos hemos llegado, y los cambios que ya hemos 
-aceptado en JVM, empecemos por un rápido repaso de los ultimos 20 años.
+aceptado en JVM, empecemos por un rápido repaso de los últimos 20 años.
 
 Java 1.2 introdujo Collections API, permitiéndonos escribir métodos 
 abstractos de colecciones. Fue útil para escribir algoritmos genéricos 
-y fue la base de nuestro código.
+y constituyó la base de nuestro código.
 
 Pero había un problema, teníamos que performar 'casting' en tiempo de ejecución:
 
@@ -18,30 +18,30 @@ Pero había un problema, teníamos que performar 'casting' en tiempo de ejecuci�
   }
 ~~~~~~~~
 
-Como solución, desarrolladores tuvieron que definir modelos en su lógica 
+Como solución, los desarrolladores tuvieron que definir modelos en su lógica 
 de negocio que eran efectivamente `CollectionOfThings`, y de esta manera 
 Collection API se convirtió en un detalle de implementación.
 
 En el 2005, Java 5 introdujo *generics*, así permitiéndonos definir
-`Collection<Thing>`, abstrayendonos no solo del container pero de sus 
-elementos. Generics cambió la manera en la que escribimos Java
+`Collection<Thing>`, abstrayéndonos no sólo del container, sino también 
+de sus elementos. Generics cambió la manera en la que escribimos Java.
 
-El autor de Java generics, Martin Odersky, luego creo Scala con un 
+El autor de Java generics, Martin Odersky, creó después Scala con un 
 ‘Type system’ aún más fuerte, estructuras inmutables y herencia múltiple. 
 Esto trajo consigo una fusión de programación orientada a objetos (OOP) 
 y programación funcional (FP).
 
 Para la mayoría de desarrolladores, FP significa utilizar valores inmutables 
-siempre que sea posible, pero estado mutable todavía es un mal necesario 
-que debe ser aislado y manejado, ej. Con Akka o `synchronized` clases. 
+siempre que sea posible, pero el estado mutable es todavía es un mal necesario 
+que debe ser aislado y manejado, por ej. Con Akka o clases `synchronized`. 
 Este estilo de FP resulta en programas más simples de paralelizar y distribuir, 
-definitivamente una mejora sobre Java.. Pero esto es solo el principio de los 
+definitivamente una mejora sobre Java. Pero esto es sólo el principio de los 
 beneficios de FP, como iremos descubriendo más adelante en este libro. 
 
 Scala también incorpora `Future`, haciendo más fácil escribir aplicaciones 
-asincrónicas. Pero cuando un `Future` aparece como el tipo retornado, *todo* 
-necesita ser re-escrito para soportarlo, incluyendo tests, los cuales ahora 
-están sujetos a arbitrarios ‘timeouts’.
+asíncronas. Pero cuando el tipo retornado es un `Future`, *todo* 
+necesita ser reescrito para ser compatible, incluyendo tests, que ahora 
+están sujetos a ‘timeouts’ arbitrarios.
 
 Tenemos un problema similar a Java 1.0: No hay manera de abstraernos de la 
 ejecución, de la misma manera que no teníamos manera de abstraernos de las 
